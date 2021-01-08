@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/wallet_frag">
+
+    <fragment
+        android:id="@+id/wallet_frag"
+        android:name="com.example.ethereum_wallet.Wallet_frag"
+        android:label="fragment_wallet_frag"
+        tools:layout="@layout/fragment_wallet_frag" />
+</navigation>

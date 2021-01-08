@@ -1,0 +1,87 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        applicationId "com.example.ethereum_wallet"
+        minSdkVersion 21
+        multiDexEnabled true
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    testImplementation 'junit:junit:4.13.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    // dependencies for ethereum-blockchain interaction
+    implementation 'org.web3j:infura:3.6.0'
+    implementation 'org.web3j:core:4.8.1'
+
+    //Lottie Animation
+    def lottieVersion = "3.6.0"
+    implementation "com.airbnb.android:lottie:$lottieVersion"
+
+    //passcode view
+    implementation 'com.chaos.view:pinview:1.4.4'
+    implementation 'com.hanks:passcodeview:0.1.2'
+
+    //Animation
+    implementation 'com.daimajia.androidanimations:library:2.4@aar'
+
+
+    def nav_version = "2.3.2"
+
+    // Java language implementation
+    implementation "androidx.navigation:navigation-fragment:$nav_version"
+    implementation "androidx.navigation:navigation-ui:$nav_version"
+
+    // Kotlin
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    // Feature module Support
+    implementation "androidx.navigation:navigation-dynamic-features-fragment:$nav_version"
+
+    // Testing Navigation
+    androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
+
+    // Jetpack Compose Integration
+    implementation "androidx.navigation:navigation-compose:1.0.0-alpha04"
+
+
+
+
+//    //OkHttp
+//    implementation ("com.squareup.okhttp3:okhttp:3.12.12"){
+//        force = true //API 19 support
+//    }
+//    implementation 'com.squareup.okhttp3:logging-interceptor:3.12.12'
+
+
+}
