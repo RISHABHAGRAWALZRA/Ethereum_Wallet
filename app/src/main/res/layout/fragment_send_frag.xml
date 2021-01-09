@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/trsctlst"
+    android:paddingTop="10dp"
+    android:paddingBottom="30dp"
+    tools:context=".Send_frag">
+
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/dehaze"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="96dp"
+        android:layout_height="82dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/eth_transfer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Send Ether"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/imageView4"
+        app:layout_constraintStart_toStartOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
+    <com.kofigyan.stateprogressbar.StateProgressBar
+        android:id="@+id/stepview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView4"
+        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintStart_toStartOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:spb_animateToCurrentProgressState="true"
+        app:spb_checkStateCompleted="true"
+        app:spb_currentStateDescriptionColor="#499AD0"
+        app:spb_currentStateNumber="one"
+        app:spb_maxStateNumber="three"
+        app:spb_stateBackgroundColor="#BDBDBD"
+        app:spb_stateDescriptionColor="#808080"
+        app:spb_stateForegroundColor="#499AD0"
+        app:spb_stateNumberBackgroundColor="#808080"
+        app:spb_stateNumberForegroundColor="#eeeeee" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="31dp"
+        android:elevation="20dp"
+        app:cardBackgroundColor="#fefefe"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stepview">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="20dp">
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Recipent Address"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/edtxtadrs"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/key_txt"
+                android:elevation="5dp"
+                android:hint="Address of receipent"
+                android:inputType="text"
+                android:paddingStart="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+            <Button
+                android:id="@+id/btnnxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/nxt"
+                android:text="Next"
+                android:textColor="@color/white"
+                app:backgroundTint="#499AD0"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edtxtadrs" />
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="200dp"
+                android:layout_height="2dp"
+                android:layout_marginTop="36dp"
+                android:background="#c1c1c1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnnxt" />
+
+            <ImageView
+                android:id="@+id/scan"
+                android:layout_width="50dp"
+                android:layout_height="47dp"
+                android:layout_marginTop="28dp"
+                android:src="@drawable/qr_code_scanner"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="159dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="156dp"
+                android:text="Scan QR"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/scan" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

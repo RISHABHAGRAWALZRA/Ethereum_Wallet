@@ -38,6 +38,9 @@ dependencies {
     testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation 'com.android.volley:volley:1.1.1'
+    implementation 'com.google.android.gms:play-services-cronet:17.0.0'
+
 
     // dependencies for ethereum-blockchain interaction
     implementation 'org.web3j:infura:3.6.0'
@@ -53,6 +56,9 @@ dependencies {
 
     //Animation
     implementation 'com.daimajia.androidanimations:library:2.4@aar'
+
+    //step view progessbar
+    implementation 'com.kofigyan.stateprogressbar:stateprogressbar:1.0.0'
 
 
     def nav_version = "2.3.2"

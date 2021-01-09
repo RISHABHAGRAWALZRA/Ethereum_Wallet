@@ -1,154 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/swiperefresh"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/transparent"
-    android:backgroundTint="@android:color/transparent"
     tools:context=".Wallet_frag">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_margin="15dp"
-            android:layout_marginTop="388dp"
-            android:elevation="5dp"
-            app:cardBackgroundColor="#ffffff"
-            app:cardCornerRadius="15dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="match_parent">
 
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="150dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:elevation="5dp"
+                app:cardBackgroundColor="#ffffff"
+                app:cardCornerRadius="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
-                    android:id="@+id/txtadres"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="18dp"
-                    android:text="TextView"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.087"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageView
-                    android:id="@+id/imageView2"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginEnd="4dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/txtethval"
-                    app:layout_constraintEnd_toStartOf="@+id/txtethval"
-                    app:layout_constraintTop_toTopOf="@+id/txtethval"
-                    app:srcCompat="@drawable/eth_logo" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/txtethval"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="64dp"
-                    android:layout_marginEnd="24dp"
-                    android:text="TextView"
-                    android:textSize="22sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    <TextView
+                        android:id="@+id/txtadres"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="18dp"
+                        android:text="TextView"
+                        android:textSize="16sp"
+                        app:autoSizeMaxTextSize="10dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.087"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/txtethdol"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="24dp"
-                    android:text="TextView"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtethval" />
+                    <ImageView
+                        android:id="@+id/imageView2"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginEnd="4dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/txtethval"
+                        app:layout_constraintEnd_toStartOf="@+id/txtethval"
+                        app:layout_constraintTop_toTopOf="@+id/txtethval"
+                        app:srcCompat="@drawable/eth_logo" />
 
-                <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/dollar_sign0"
-                    app:layout_constraintBottom_toBottomOf="@+id/txtethdol"
-                    app:layout_constraintEnd_toStartOf="@+id/txtethdol"
-                    app:layout_constraintTop_toTopOf="@+id/txtethdol" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    <TextView
+                        android:id="@+id/txtethval"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="48dp"
+                        android:layout_marginEnd="8dp"
+                        android:text="TextView"
+                        android:textSize="20sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-        </androidx.cardview.widget.CardView>
+                    <TextView
+                        android:id="@+id/txtethdol"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginEnd="12dp"
+                        android:text="TextView"
+                        android:textSize="10sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtethval" />
 
-        <Button
-            android:id="@+id/rcvbtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="28dp"
-            android:backgroundTint="#e5e5e5"
-            android:text="RECIEVE"
-            android:textColor="#307AA2"
-            app:layout_constraintBottom_toBottomOf="@+id/cardView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView" />
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:src="@drawable/dollar_sign0"
+                        app:layout_constraintBottom_toBottomOf="@+id/txtethdol"
+                        app:layout_constraintEnd_toStartOf="@+id/txtethdol"
+                        app:layout_constraintTop_toTopOf="@+id/txtethdol" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <Button
-            android:id="@+id/sndbtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:backgroundTint="#e5e5e5"
-            android:elevation="10dp"
-            android:text="Send"
-            android:textColor="#307AA2"
-            app:layout_constraintBottom_toBottomOf="@+id/cardView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView" />
+            </androidx.cardview.widget.CardView>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="15dp"
-            android:background="@drawable/trsctlst"
-            android:elevation="10dp"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView"
-            app:layout_constraintVertical_bias="0.100000024">
+            <Button
+                android:id="@+id/rcvbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="40dp"
+                android:backgroundTint="#e5e5e5"
+                android:text="RECIEVE"
+                android:textColor="#307AA2"
+                app:layout_constraintBottom_toBottomOf="@+id/cardView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
-            <TextView
-                android:id="@+id/textView13"
+            <Button
+                android:id="@+id/sndbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:backgroundTint="#e5e5e5"
+                android:elevation="10dp"
+                android:text="Send"
+                android:textColor="#307AA2"
+                app:layout_constraintBottom_toBottomOf="@+id/cardView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="5dp"
-                android:text="Some Last Transaction List"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="15dp"
+                android:background="@drawable/trsctlst"
+                android:elevation="10dp"
+                android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView"
+                app:layout_constraintVertical_bias="0.100000024">
 
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="Some Last Transaction List"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </LinearLayout>
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
-</FrameLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
