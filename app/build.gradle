@@ -2,6 +2,39 @@ plugins {
     id 'com.android.application'
 }
 
+// Begin of reading the sensitive data
+// GV 21/02/2018
+def ropstenURL = "No_URL_FOUND"
+def kovanURL = "No_URL_FOUND"
+def mainNetURL = "No_URL_FOUND"
+def rinkebyURL = "No_URL_FOUND"
+
+
+def sensitiveDataFile = file('../sensitive_data.txt')
+def Properties sensitiveData = new Properties()
+
+if (sensitiveDataFile.canRead()) {
+    // Read the sensitive data from file sensitive_data.txt
+    sensitiveData.load(new FileInputStream(sensitiveDataFile))
+
+    if (sensitiveData != null) {
+        if (sensitiveData.containsKey('ropstenUrl')) ropstenURL = sensitiveData['ropstenUrl']
+        if (sensitiveData.containsKey('kovanUrl')) kovanURL = sensitiveData['kovanUrl']
+        if (sensitiveData.containsKey('mainNetUrl')) mainNetURL = sensitiveData['mainNetUrl']
+        if (sensitiveData.containsKey('rinkebyUrl')) rinkebyURL = sensitiveData['rinkebyUrl']
+    }
+}
+
+// In this section a reviewer can insert directly his own sensitive data
+// by replacing the strings beginning with REVIEWERS_
+// Just double click on the string and paste you own data
+if (ropstenURL == "No_URL_FOUND") ropstenURL = '"REVIEWERS_THEMOVIEDB_API_KEY_GOES_HERE"'
+if (kovanURL == "No_URL_FOUND") kovanURL = '"REVIEWERS_FACEBOOK_APP_ID_GOES_HERE"'
+if (mainNetURL == "No_URL_FOUND") mainNetURL = '"REVIEWERS_GMAIL_CREDENTIAL_USERNAME_GOES_HERE"'
+if (rinkebyURL == "No_URL_FOUND") rinkebyURL = '"REVIEWERS_GMAIL_CREDENTIAL_PASSWORD_GOES_HERE"'
+// End of reading the sensitive data
+
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
@@ -15,6 +48,19 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        // Begin of injecting the sensitive data
+        // Add the sensitive data as Constant Fields to the BuildConfig class
+        buildConfigField "String", "ropstenURL", ropstenURL
+        buildConfigField "String", "kovanURL", kovanURL
+        buildConfigField "String", "mainNetURL", mainNetURL
+        buildConfigField "String", "rinkebyURL", rinkebyURL
+        // Add the sensitive data as String Resources
+        resValue "string", "ropstenURL", ropstenURL
+        resValue "string", "kovanURL", kovanURL
+        resValue "string", "mainNetURL", mainNetURL
+        resValue "string", "rinkebyURL", rinkebyURL
+        // End of injecting the sensitive data
     }
 
     buildTypes {
@@ -79,8 +125,6 @@ dependencies {
 
     // Jetpack Compose Integration
     implementation "androidx.navigation:navigation-compose:1.0.0-alpha04"
-
-
 
 
 //    //OkHttp

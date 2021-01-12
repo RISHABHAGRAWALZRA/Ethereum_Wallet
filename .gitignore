@@ -16,3 +16,6 @@ local.properties
 
 #test file
 app/src/main/java/com/example/ethereum_wallet/test.java
+
+#Sensitive Data
+sensitive_data.txt

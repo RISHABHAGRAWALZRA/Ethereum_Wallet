@@ -56,7 +56,7 @@ public class Wallet_frag extends Fragment {
         super.onCreate(savedInstanceState);
 
         // Connection
-        InfuraHttpService infuraHttpService = new InfuraHttpService(Utility.ropstenUrl);
+        InfuraHttpService infuraHttpService = new InfuraHttpService(BuildConfig.ropstenURL);
         web3j = Web3j.build(infuraHttpService);
 
         try {
@@ -147,7 +147,7 @@ public class Wallet_frag extends Fragment {
     private void requestCallForExchangeRates(BigDecimal nbalance) {
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
-                (Request.Method.GET, Utility.exchange_rate_URL, null, new Response.Listener<JSONObject>() {
+                (Request.Method.GET, "https://api.coinbase.com/v2/exchange-rates?currency=ETH", null, new Response.Listener<JSONObject>() {
 
                     @Override
                     public void onResponse(JSONObject response) {
