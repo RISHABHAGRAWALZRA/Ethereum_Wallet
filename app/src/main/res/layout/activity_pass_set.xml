@@ -34,7 +34,6 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/aldrich"
             android:gravity="center"
-
             android:text="Set Your PIN"
             android:textColor="#2D2B2B"
             android:textSize="25dp" />
@@ -45,7 +44,6 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/aldrich"
             android:gravity="center"
-
             android:text="Please Enter four digit pin to keep safe you wallet"
             android:textColor="#2D2B2B"
             android:textSize="15dp" />
@@ -86,7 +84,7 @@
         android:layout_marginTop="72dp"
         android:background="@drawable/nxt"
         android:text="DONE"
-        app:backgroundTint="#57a8b9"
+        app:backgroundTint="#499AD0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"

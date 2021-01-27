@@ -40,17 +40,24 @@
 
                     <TextView
                         android:id="@+id/txtadres"
-                        android:layout_width="wrap_content"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="18dp"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/txtadrs_bg"
+                        android:ellipsize="middle"
+                        android:fontFamily="@font/aldrich"
+                        android:gravity="center"
+                        android:paddingStart="5dp"
+                        android:paddingTop="2dp"
+                        android:paddingEnd="5dp"
+                        android:paddingBottom="2dp"
+                        android:singleLine="true"
                         android:text="TextView"
-                        android:textSize="16sp"
-                        app:autoSizeMaxTextSize="10dp"
+                        android:textSize="12sp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.087"
+                        app:layout_constraintHorizontal_bias="0.072"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
                     <ImageView
                         android:id="@+id/imageView2"
@@ -68,8 +75,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="48dp"
                         android:layout_marginEnd="8dp"
+                        android:fontFamily="@font/aldrich"
                         android:text="TextView"
                         android:textSize="20sp"
+                        android:visibility="invisible"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -79,19 +88,45 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:layout_marginEnd="12dp"
+                        android:fontFamily="@font/aldrich"
                         android:text="TextView"
                         android:textSize="10sp"
+                        android:visibility="invisible"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/txtethval" />
 
                     <ImageView
-                        android:id="@+id/imageView3"
+                        android:id="@+id/dollarimg"
                         android:layout_width="15dp"
                         android:layout_height="15dp"
                         android:src="@drawable/dollar_sign0"
+                        android:visibility="visible"
                         app:layout_constraintBottom_toBottomOf="@+id/txtethdol"
                         app:layout_constraintEnd_toStartOf="@+id/txtethdol"
                         app:layout_constraintTop_toTopOf="@+id/txtethdol" />
+
+                    <TextView
+                        android:id="@+id/textView14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/aldrich"
+                        android:text="Public Address"
+                        android:textSize="10sp"
+                        app:layout_constraintEnd_toEndOf="@+id/txtadres"
+                        app:layout_constraintStart_toStartOf="@+id/txtadres"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/aldrich"
+                        android:text="Balance"
+                        android:textSize="10sp"
+                        app:layout_constraintBottom_toTopOf="@+id/txtethval"
+                        app:layout_constraintEnd_toEndOf="@+id/txtethval"
+                        app:layout_constraintStart_toEndOf="@+id/imageView2" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.cardview.widget.CardView>

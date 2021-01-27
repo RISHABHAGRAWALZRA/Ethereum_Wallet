@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- not selected has transparent color -->
+    <item android:state_pressed="false" android:state_selected="false">
+        <shape>
+            <solid android:color="#d5d5d5"/>
+            <corners android:radius="10dp"/>
+
+        </shape>
+    </item>
+    <item android:state_pressed="true">
+        <shape>
+            <solid android:color="#e8e8e8"/>
+            <corners android:radius="10dp"/>
+        </shape>
+
+    </item>
+    <item android:state_pressed="false" android:state_selected="true">
+        <color android:color="#ff0000"/>
+    </item>
+</selector>

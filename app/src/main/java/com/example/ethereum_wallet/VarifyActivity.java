@@ -61,6 +61,8 @@ public class VarifyActivity extends AppCompatActivity {
                         imgeth.setVisibility(View.INVISIBLE);
                         anim.setVisibility(View.VISIBLE);
 
+
+
                         Handler mHandler = new Handler();
                         mHandler.postDelayed(new Runnable() {
 
@@ -72,7 +74,7 @@ public class VarifyActivity extends AppCompatActivity {
                                 finish();
                             }
 
-                        }, 4300L);
+                        }, 4000L);
 
                     } else{
                         YoYo.with(Techniques.Shake).duration(500).repeat(1).playOn(pinView);
@@ -88,9 +90,9 @@ public class VarifyActivity extends AppCompatActivity {
 
             }
         });
-
-
     }
+
+
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         if (getCurrentFocus() != null) {
@@ -112,7 +114,7 @@ public class VarifyActivity extends AppCompatActivity {
     }
 
     private void initviews() {
-        pinView = findViewById(R.id.firstPinView);
+        pinView = findViewById(R.id.verifyPinView);
         anim = findViewById(R.id.crrct);
         imgeth = findViewById(R.id.imgeth);
     }

@@ -1,5 +1,10 @@
 package com.example.ethereum_wallet;
 
+import android.app.ActivityOptions;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -8,10 +13,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
@@ -42,10 +49,9 @@ public class Wallet_frag extends Fragment {
 
     TextView txtadrs, txtethval, txtethdol;
     Button sndbtn, rcvbtn;
+    ImageView dollarimg;
     SwipeRefreshLayout swipeRefreshLayout;
 
-    Credentials credentials;
-    Web3j web3j;
     Web3ClientVersion web3ClientVersion;
 
     RequestQueue queue;
@@ -57,10 +63,10 @@ public class Wallet_frag extends Fragment {
 
         // Connection
         InfuraHttpService infuraHttpService = new InfuraHttpService(BuildConfig.ropstenURL);
-        web3j = Web3j.build(infuraHttpService);
+        Utility.web3j = Web3j.build(infuraHttpService);
 
         try {
-            web3ClientVersion = web3j.web3ClientVersion().sendAsync().get();
+            web3ClientVersion = Utility.web3j.web3ClientVersion().sendAsync().get();
             String clientVersion = web3ClientVersion.getWeb3ClientVersion();
             Toast.makeText(getActivity(), "ClientVersion: " + clientVersion, Toast.LENGTH_SHORT).show();
             Log.d("Wallet_Frag", "onConnected to network: " + clientVersion);
@@ -72,12 +78,22 @@ public class Wallet_frag extends Fragment {
 
         SharedPreferences preferences = getContext().getSharedPreferences(getString(R.string.preference_file_key), MODE_PRIVATE);
         String key = preferences.getString("private_key", null);
-        credentials = Credentials.create(key);
+        Utility.credentials = Credentials.create(key);
+        //credentials = WalletUtils.loadBip39Credentials("password",)
 
         // Instantiate the RequestQueue.
         queue = Volley.newRequestQueue(getContext());
 
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.i("OnResume Called", "onRefresh called from SwipeRefreshLayout");
+
+        BigDecimal balance = getEthBalance();
+        requestCallForExchangeRates(balance);
     }
 
     @Override
@@ -87,6 +103,9 @@ public class Wallet_frag extends Fragment {
         View view = inflater.inflate(R.layout.fragment_wallet_frag, container, false);
         initviews(view);
 
+        BigDecimal balance = getEthBalance();
+        requestCallForExchangeRates(balance);
+
         return view;
     }
 
@@ -94,21 +113,36 @@ public class Wallet_frag extends Fragment {
     public void onStart() {
         super.onStart();
 
-        BigDecimal balance = getEthBalance();
-        requestCallForExchangeRates(balance);
+
 
         sndbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Send_frag send__frag = new Send_frag();
-                send__frag.show(getParentFragmentManager(),"BottomSheetDialog");
+                Intent intent = new Intent(getContext(),SendEtherActivity.class);
+                intent.putExtra("ether",txtethval.getText().toString());
+                intent.putExtra("dollar",txtethdol.getText().toString());
+                startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(getActivity()).toBundle());
             }
         });
 
         rcvbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                DialogFragment dialogFragment = new ReceiveFragment(txtadrs.getText().toString());
 
+                dialogFragment.show(getParentFragmentManager(),"Dialog");
+            }
+        });
+
+        txtadrs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newPlainText("simple text", txtadrs.getText().toString());
+                // Set the clipboard's primary clip.
+                clipboard.setPrimaryClip(clip);
+
+                Toast.makeText(getContext(), "Public Address Copied to Clipboard", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -128,12 +162,13 @@ public class Wallet_frag extends Fragment {
     private BigDecimal getEthBalance() {
         BigDecimal nbalance = null;
         try {
-            EthGetBalance ethGetBalance = web3j.ethGetBalance(credentials.getAddress(), DefaultBlockParameter.valueOf("latest")).sendAsync().get();
+            EthGetBalance ethGetBalance = Utility.web3j.ethGetBalance(Utility.credentials.getAddress(), DefaultBlockParameter.valueOf("latest")).sendAsync().get();
 
             BigDecimal balance = new BigDecimal(ethGetBalance.getBalance().divide(new BigInteger("10000000000000")).toString());
             nbalance = balance.divide(new BigDecimal("100000"), 3, BigDecimal.ROUND_DOWN);
             txtethval.setText(nbalance.toString());
-            txtadrs.setText(credentials.getAddress());
+            txtethval.setVisibility(View.VISIBLE);
+            txtadrs.setText(Utility.credentials.getAddress());
 
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -143,6 +178,7 @@ public class Wallet_frag extends Fragment {
 
         return nbalance;
     }
+
 
     private void requestCallForExchangeRates(BigDecimal nbalance) {
 
@@ -156,6 +192,7 @@ public class Wallet_frag extends Fragment {
                             String excahnge_rate = response.getJSONObject("data").getJSONObject("rates").getString("USD");
                             BigDecimal eth_to_val = new BigDecimal(String.valueOf(nbalance.multiply(new BigDecimal(excahnge_rate)))).setScale(3,RoundingMode.DOWN);
                             txtethdol.setText(String.valueOf(eth_to_val));
+                            txtethdol.setVisibility(View.VISIBLE);
                             swipeRefreshLayout.setRefreshing(false);
                             Log.d("answer", "onResponse: answer is loaded completely");
                         } catch (JSONException e) {
@@ -184,7 +221,15 @@ public class Wallet_frag extends Fragment {
         txtethdol = view.findViewById(R.id.txtethdol);
         sndbtn = view.findViewById(R.id.sndbtn);
         rcvbtn = view.findViewById(R.id.rcvbtn);
+        dollarimg = view.findViewById(R.id.dollarimg);
         swipeRefreshLayout = view.findViewById(R.id.swiperefresh);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Utility.web3j.shutdown();
+        Utility.executorService.shutdown();
     }
 
 }

@@ -106,6 +106,19 @@ dependencies {
     //step view progessbar
     implementation 'com.kofigyan.stateprogressbar:stateprogressbar:1.0.0'
 
+    //Gif viewer
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.21'
+
+    //QR scanner for minSdk 21
+    implementation('com.journeyapps:zxing-android-embedded:3.4.0')
+
+    //for request-permissions
+    implementation 'com.karumi:dexter:6.2.2'
+
+    //spongycastle
+    implementation 'com.madgag.spongycastle:bcpkix-jdk15on:1.58.0.0'
+    implementation 'com.madgag.spongycastle:bcpg-jdk15on:1.58.0.0'
+
 
     def nav_version = "2.3.2"
 

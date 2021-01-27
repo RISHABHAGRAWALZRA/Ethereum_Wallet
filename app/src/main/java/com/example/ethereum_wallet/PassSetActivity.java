@@ -38,6 +38,8 @@ public class PassSetActivity extends AppCompatActivity {
 
         SharedPreferences preferences = PassSetActivity.this.getSharedPreferences(getString(R.string.preference_file_key),MODE_PRIVATE);
 
+        Intent intent = getIntent();
+        String key = intent.getStringExtra("Private_Key");
 
         pinView.addTextChangedListener(new TextWatcher() {
             @Override
@@ -67,11 +69,13 @@ public class PassSetActivity extends AppCompatActivity {
                 if(canSet==4){
                     Toast.makeText(PassSetActivity.this, "Your PIN is set and your wallet is safe  PIN: "+PIN, Toast.LENGTH_SHORT).show();
                     SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("private_key",key);
                     editor.putString("pin",PIN);
                     editor.putBoolean("logged",true);
                     editor.commit();
 
                     Intent intent = new Intent(PassSetActivity.this,HomeActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                     finish();
                 }else{

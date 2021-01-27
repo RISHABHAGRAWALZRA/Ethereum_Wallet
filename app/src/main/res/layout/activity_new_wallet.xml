@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewWallet">
+
+    <ImageButton
+        android:id="@+id/imgbtnbac"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/round_bac_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_ios_24" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="184dp"
+        android:layout_height="181dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="105dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/eth_newkey" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:text="Public Key"
+        app:layout_constraintEnd_toEndOf="@+id/imageView5"
+        app:layout_constraintStart_toStartOf="@+id/imageView5"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+
+    <TextView
+        android:id="@+id/txtadres"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/txtadrs_bg"
+        android:ellipsize="middle"
+        android:fontFamily="@font/aldrich"
+        android:gravity="center"
+        android:paddingStart="5dp"
+        android:paddingTop="2dp"
+        android:paddingEnd="5dp"
+        android:paddingBottom="2dp"
+        android:singleLine="true"
+        android:text="TextView"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/textView8"
+        app:layout_constraintStart_toStartOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="84dp"
+        android:text="Private Key"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtadres" />
+
+    <TextView
+        android:id="@+id/txtkey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/privatekey_bac"
+        android:text="TextView"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView18" />
+
+    <ImageButton
+        android:id="@+id/cpyadrs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/cpy_bac"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/txtadres"
+        app:layout_constraintTop_toBottomOf="@+id/txtadres"
+        app:srcCompat="@drawable/ic_baseline_content_copy_24" />
+
+    <ImageButton
+        android:id="@+id/cpykey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/cpy_bac"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/txtkey"
+        app:layout_constraintTop_toBottomOf="@+id/txtkey"
+        app:srcCompat="@drawable/ic_baseline_content_copy_24" />
+
+    <Button
+        android:id="@+id/nxtbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/nxt"
+        app:backgroundTint="#03A9F4"
+        android:text="Next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Do not share this key with anyone"
+        android:textColor="#D83C3C"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/txtkey"
+        app:layout_constraintTop_toBottomOf="@+id/txtkey" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
