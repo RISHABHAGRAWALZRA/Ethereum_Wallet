@@ -21,4 +21,6 @@ public class Utility {
 
     public static Handler mainThreadHandler = HandlerCompat.createAsync(Looper.getMainLooper());
 
+    public static TransactionDetail[] transactionList = null ;
+
 }

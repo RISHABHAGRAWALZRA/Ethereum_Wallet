@@ -90,6 +90,13 @@ public class SendEtherActivity extends AppCompatActivity {
             }
         });
 
+        cnclbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
         edtxtval.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

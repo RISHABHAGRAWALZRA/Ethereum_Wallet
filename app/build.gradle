@@ -8,6 +8,7 @@ def ropstenURL = "No_URL_FOUND"
 def kovanURL = "No_URL_FOUND"
 def mainNetURL = "No_URL_FOUND"
 def rinkebyURL = "No_URL_FOUND"
+def detailApi = "No_API_FOUND"
 
 
 def sensitiveDataFile = file('../sensitive_data.txt')
@@ -22,6 +23,7 @@ if (sensitiveDataFile.canRead()) {
         if (sensitiveData.containsKey('kovanUrl')) kovanURL = sensitiveData['kovanUrl']
         if (sensitiveData.containsKey('mainNetUrl')) mainNetURL = sensitiveData['mainNetUrl']
         if (sensitiveData.containsKey('rinkebyUrl')) rinkebyURL = sensitiveData['rinkebyUrl']
+        if(sensitiveData.containsKey('etherScanApi')) detailApi = sensitiveData['etherScanApi']
     }
 }
 
@@ -32,6 +34,7 @@ if (ropstenURL == "No_URL_FOUND") ropstenURL = '"REVIEWERS_THEMOVIEDB_API_KEY_GO
 if (kovanURL == "No_URL_FOUND") kovanURL = '"REVIEWERS_FACEBOOK_APP_ID_GOES_HERE"'
 if (mainNetURL == "No_URL_FOUND") mainNetURL = '"REVIEWERS_GMAIL_CREDENTIAL_USERNAME_GOES_HERE"'
 if (rinkebyURL == "No_URL_FOUND") rinkebyURL = '"REVIEWERS_GMAIL_CREDENTIAL_PASSWORD_GOES_HERE"'
+if(detailApi == "NO_API_FOUND") detailApi = ""
 // End of reading the sensitive data
 
 
@@ -55,11 +58,13 @@ android {
         buildConfigField "String", "kovanURL", kovanURL
         buildConfigField "String", "mainNetURL", mainNetURL
         buildConfigField "String", "rinkebyURL", rinkebyURL
+        buildConfigField "String", "detailApi", detailApi
         // Add the sensitive data as String Resources
         resValue "string", "ropstenURL", ropstenURL
         resValue "string", "kovanURL", kovanURL
         resValue "string", "mainNetURL", mainNetURL
         resValue "string", "rinkebyURL", rinkebyURL
+        resValue "string", "detailApi", detailApi
         // End of injecting the sensitive data
     }
 
@@ -87,7 +92,10 @@ dependencies {
     implementation 'com.android.volley:volley:1.1.1'
     implementation 'com.google.android.gms:play-services-cronet:17.0.0'
 
+    //GSON
+    implementation 'com.google.code.gson:gson:2.8.6'
 
+    
     // dependencies for ethereum-blockchain interaction
     implementation 'org.web3j:infura:3.6.0'
     implementation 'org.web3j:core:4.8.1'
