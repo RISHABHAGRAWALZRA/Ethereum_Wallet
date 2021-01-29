@@ -23,4 +23,6 @@ public class Utility {
 
     public static TransactionDetail[] transactionList = null ;
 
+    public static String exchangeRate = null;
+
 }

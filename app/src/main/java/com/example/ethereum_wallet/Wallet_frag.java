@@ -66,35 +66,61 @@ public class Wallet_frag extends Fragment {
 
     RequestQueue queue;
 
+    Boolean conn=false;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Connection
-        InfuraHttpService infuraHttpService = new InfuraHttpService(BuildConfig.ropstenURL);
-        Utility.web3j = Web3j.build(infuraHttpService);
-
-        try {
-            web3ClientVersion = Utility.web3j.web3ClientVersion().sendAsync().get();
-            String clientVersion = web3ClientVersion.getWeb3ClientVersion();
-            Toast.makeText(getActivity(), "ClientVersion: " + clientVersion, Toast.LENGTH_SHORT).show();
-            Log.d("Wallet_Frag", "onConnected to network: " + clientVersion);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
-
-        SharedPreferences preferences = getContext().getSharedPreferences(getString(R.string.preference_file_key), MODE_PRIVATE);
-        String key = preferences.getString("private_key", null);
-        Utility.credentials = Credentials.create(key);
-        //credentials = WalletUtils.loadBip39Credentials("password",)
-
         // Instantiate the RequestQueue.
         queue = Volley.newRequestQueue(getContext());
 
+        //Loading Credentials
+        SharedPreferences preferences = getContext().getSharedPreferences(getString(R.string.preference_file_key), MODE_PRIVATE);
+        String key = preferences.getString("private_key", null);
+        Utility.credentials = Credentials.create(key);
 
+        createConnection(new ConnectionCallback<InfuraHttpService>() {
+            @Override
+            public void onComplete(InfuraHttpService service) {
+                Utility.web3j = Web3j.build(service);
+
+                try {
+                    web3ClientVersion = Utility.web3j.web3ClientVersion().sendAsync().get();
+                    String clientVersion = web3ClientVersion.getWeb3ClientVersion();
+                    Toast.makeText(getActivity(), "ClientVersion: " + clientVersion, Toast.LENGTH_SHORT).show();
+                    Log.d("Wallet_Frag", "onConnected to network: " + clientVersion);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
+
+                conn = true;
+                getEthBalance();
+            }
+        },Utility.mainThreadHandler);
+    }
+
+    interface ConnectionCallback<T> {
+        void onComplete(InfuraHttpService service);
+    }
+
+    public void createConnection(ConnectionCallback<InfuraHttpService> callback,Handler handler){
+        Utility.executorService.execute(new Runnable() {
+            @Override
+            public void run() {
+                // Connection
+                InfuraHttpService infuraHttpService = new InfuraHttpService(BuildConfig.ropstenURL);
+
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        callback.onComplete(infuraHttpService);
+                    }
+                });
+            }
+        });
     }
 
     @Override
@@ -102,7 +128,9 @@ public class Wallet_frag extends Fragment {
         super.onResume();
         Log.i("OnResume Called", "getEthBalance called from here");
 
-        getEthBalance();
+        if(conn){
+            getEthBalance();
+        }
     }
 
 
@@ -118,7 +146,6 @@ public class Wallet_frag extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-
 
         sndbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -232,7 +259,7 @@ public class Wallet_frag extends Fragment {
                         smallTransactionList.add(detail[detail.length - i]);
                     }
 
-                    TransactionListAdapter adapter = new TransactionListAdapter(getContext(),smallTransactionList,excahnge_rate);
+                    TransactionListAdapter adapter = new TransactionListAdapter(getContext(),smallTransactionList,Utility.exchangeRate);
                     recyclerView.setAdapter(adapter);
                     recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -255,8 +282,6 @@ public class Wallet_frag extends Fragment {
 
     }
 
-    //To use this globally
-    String excahnge_rate;
 
     private void requestCallForExchangeRates(BigDecimal nbalance) {
 
@@ -266,11 +291,12 @@ public class Wallet_frag extends Fragment {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            excahnge_rate = response.getJSONObject("data").getJSONObject("rates").getString("USD");
+                            String excahnge_rate = response.getJSONObject("data").getJSONObject("rates").getString("USD");
                             BigDecimal eth_to_val = new BigDecimal(String.valueOf(nbalance.multiply(new BigDecimal(excahnge_rate)))).setScale(3, RoundingMode.DOWN);
                             txtethdol.setText(String.valueOf(eth_to_val));
                             txtethdol.setVisibility(View.VISIBLE);
 
+                            Utility.exchangeRate = excahnge_rate;
                             fetchForAllTransactions();
                             Log.d("answer", "onResponse: answer is loaded completely");
                         } catch (JSONException e) {

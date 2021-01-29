@@ -18,7 +18,7 @@ public class SplashScreen extends AppCompatActivity {
 
         Intent intent;
         if (preferences.getBoolean("logged", false)) {
-            intent = new Intent(SplashScreen.this, VarifyActivity.class);
+            intent = new Intent(SplashScreen.this, VerifyActivity.class);
         } else {
             intent = new Intent(SplashScreen.this,MainActivity.class);
         }

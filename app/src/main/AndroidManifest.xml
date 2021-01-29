@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.ethereum_wallet">
+    package="com.example.ethereum_wallet" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -13,11 +13,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.wallet_app">
+        android:theme="@style/Theme.wallet_app" >
         <activity
             android:name=".SplashScreen"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.splash">
+            android:theme="@style/Theme.splash" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,13 +28,14 @@
             android:name=".SendEtherActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".VarifyActivity"
+            android:name=".VerifyActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".NewWallet"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".NewWallet"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".PassSetActivity"
             android:screenOrientation="portrait" />

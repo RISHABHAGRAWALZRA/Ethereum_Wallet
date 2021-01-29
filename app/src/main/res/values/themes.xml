@@ -46,6 +46,12 @@
     <style name="CustomAlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="android:windowBackground">@drawable/receivebac</item>
     </style>
+    <style name="Theme.wallet_app.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.wallet_app.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.wallet_app.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <!--
 

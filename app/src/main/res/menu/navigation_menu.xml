@@ -4,25 +4,26 @@
     <group android:checkableBehavior="single"
         android:id="@+id/menu_top"
         >
-        <item android:id="@+id/wallet"
+        <item android:id="@+id/wallet_frag"
             android:icon="@drawable/twotone_account_balance_wallet_black_18dp"
             android:title="Wallet"/>
-        <item android:id="@+id/transac_list"
+        <item android:id="@+id/transactionlist_frag"
             android:icon="@drawable/twotone_receipt_long_black_18dp"
             android:title="Transaction List"/>
         <item
-            android:id="@+id/resetpin"
+            android:id="@+id/changePIN_frag"
             android:icon="@drawable/baseline_vpn_key_black_18dp"
             android:title="Change PIN" />
         <item
-            android:id="@+id/shareaddress"
+            android:id="@+id/sharePublicKey"
             android:icon="@drawable/ic_baseline_share_24"
             android:title="Share my Public Address"/>
 
     </group>
 
 
-    <group android:id="@+id/menu_bottom">
+    <group android:checkableBehavior="single"
+        android:id="@+id/menu_bottom">
         <item
             android:id="@+id/settings"
             android:icon="@drawable/ic_baseline_settings_24"

@@ -22,7 +22,7 @@ import com.chaos.view.PinView;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 
-public class VarifyActivity extends AppCompatActivity {
+public class VerifyActivity extends AppCompatActivity {
 
     PinView pinView;
     ImageView imgeth;
@@ -55,7 +55,7 @@ public class VarifyActivity extends AppCompatActivity {
                 canSet+=(i2-i1);
                 PIN=charSequence.toString();
                 if(canSet==4){
-                    hideKeyboard(VarifyActivity.this);
+                    hideKeyboard(VerifyActivity.this);
                     if(PIN.equals(RightPIN)) {
                         pinView.setVisibility(View.INVISIBLE);
                         imgeth.setVisibility(View.INVISIBLE);
@@ -69,7 +69,7 @@ public class VarifyActivity extends AppCompatActivity {
                             @Override
                             public void run() {
                                 //start your activity here
-                                Intent intent = new Intent(VarifyActivity.this, HomeActivity.class);
+                                Intent intent = new Intent(VerifyActivity.this, HomeActivity.class);
                                 startActivity(intent);
                                 finish();
                             }

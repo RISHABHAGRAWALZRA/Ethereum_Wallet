@@ -28,32 +28,58 @@
             app:layout_constraintTop_toTopOf="parent"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light" >
 
-            <LinearLayout
-                android:id="@+id/linlay"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:foregroundGravity="center_horizontal"
-                android:gravity="right|center_vertical"
-                android:orientation="horizontal"
-                android:paddingEnd="20dp"
-                tools:layout_editor_absoluteX="16dp">
+                android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/ntclr"
-                    android:layout_width="10dp"
-                    android:layout_height="10dp"
-                    android:layout_margin="5dp"
-                    android:background="#ff007d" />
-
-                <TextView
-                    android:id="@+id/ntwrk"
+                    android:id="@+id/title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:paddingEnd="20dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
                     android:fontFamily="@font/aldrich"
-                    android:text="Ropsten Network" />
+                    android:text="hello"
+                    android:textSize="20dp"
+                    android:visibility="gone"
+                    />
 
-            </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/linlay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:foregroundGravity="center_horizontal"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingEnd="20dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/ntclr"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_margin="5dp"
+                        android:background="#ff007d" />
+
+                    <TextView
+                        android:id="@+id/ntwrk"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/aldrich"
+                        android:text="Ropsten Network" />
+
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
         </androidx.appcompat.widget.Toolbar>
+
 
         <fragment
             android:id="@+id/nav_host_fragment"

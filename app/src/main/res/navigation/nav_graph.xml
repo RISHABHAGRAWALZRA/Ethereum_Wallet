@@ -1,14 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph"
+    android:id="@+id/nav_graph.xml"
     app:startDestination="@id/wallet_frag">
 
     <fragment
         android:id="@+id/wallet_frag"
         android:name="com.example.ethereum_wallet.Wallet_frag"
-        android:label="fragment_wallet_frag"
-        tools:layout="@layout/fragment_wallet_frag" />
+        android:label="wallet_frag"
+        tools:layout="@layout/fragment_wallet_frag"/>
+
+    <fragment
+        android:id="@+id/transactionlist_frag"
+        android:name="com.example.ethereum_wallet.TransactionList_frag"
+        android:label="transactionList_frag"
+        tools:layout="@layout/fragment_transaction_list_frag"/>
+    <fragment
+        android:id="@+id/sharePublicKey"
+        android:name="com.example.ethereum_wallet.SharePublicKey"
+        android:label="fragment_share_public_key"
+        tools:layout="@layout/fragment_share_public_key" />
+    <fragment
+        android:id="@+id/changePIN_frag"
+        android:name="com.example.ethereum_wallet.ChangePIN_frag"
+        android:label="fragment_change_p_i_n_frag"
+        tools:layout="@layout/fragment_change_p_i_n_frag" />
+
 </navigation>
