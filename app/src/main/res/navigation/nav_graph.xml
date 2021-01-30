@@ -27,4 +27,17 @@
         android:label="fragment_change_p_i_n_frag"
         tools:layout="@layout/fragment_change_p_i_n_frag" />
 
+    <dialog
+        android:id="@+id/logoutDialog"
+        android:name="com.example.ethereum_wallet.LogoutDialog"
+        android:label="fragment_logout_dialog"
+        tools:layout="@layout/fragment_logout_dialog" />
+
+    <dialog
+        android:id="@+id/network"
+        android:name="com.example.ethereum_wallet.Network"
+        android:label="fragment_network"
+        tools:layout="@layout/fragment_network" />
+
+
 </navigation>

@@ -30,7 +30,7 @@
             android:title="Settings" />
 
         <item
-            android:id="@+id/logout"
+            android:id="@+id/logoutDialog"
             android:icon="@drawable/logout"
             android:title="Logout" />
 

@@ -76,6 +76,14 @@ public class HomeActivity extends AppCompatActivity {
                 Toast.makeText(HomeActivity.this, String.valueOf(destination.getId()), Toast.LENGTH_SHORT).show();
 
             }
+
+        });
+
+        linlay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.network);
+            }
         });
 
     }

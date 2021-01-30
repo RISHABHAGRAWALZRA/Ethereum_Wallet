@@ -50,8 +50,13 @@ public class TransactionListAdapter extends RecyclerView.Adapter<TransactionList
         TransactionDetail transaction = transactionList.get(position);
 
         if(transaction.getFrom().equals(Utility.credentials.getAddress())){
-            holder.adrs.setText(transaction.getTo());
-            holder.img.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.send_arrow));
+            if(transaction.getTo().equals("")){
+                holder.adrs.setText(transaction.getContractAddress());
+                holder.img.setImageDrawable(ContextCompat.getDrawable(context,R.drawable.contract));
+            }else{
+                holder.adrs.setText(transaction.getTo());
+                holder.img.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.send_arrow));
+            }
         }else{
             holder.adrs.setText(transaction.getFrom());
             holder.img.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.receive_arrow));

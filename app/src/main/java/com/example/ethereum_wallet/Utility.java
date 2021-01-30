@@ -8,6 +8,8 @@ import androidx.core.os.HandlerCompat;
 import org.web3j.crypto.Credentials;
 import org.web3j.protocol.Web3j;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -21,7 +23,7 @@ public class Utility {
 
     public static Handler mainThreadHandler = HandlerCompat.createAsync(Looper.getMainLooper());
 
-    public static TransactionDetail[] transactionList = null ;
+    public static List<TransactionDetail> transactionList = new ArrayList<>();
 
     public static String exchangeRate = null;
 

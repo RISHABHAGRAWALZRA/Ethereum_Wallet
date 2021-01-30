@@ -1,12 +1,16 @@
 package com.example.ethereum_wallet;
 
 import android.app.ActivityOptions;
+import android.app.AlertDialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -44,10 +48,12 @@ import org.web3j.protocol.core.methods.response.EthGetBalance;
 import org.web3j.protocol.core.methods.response.Web3ClientVersion;
 import org.web3j.protocol.infura.InfuraHttpService;
 
+import java.lang.reflect.Type;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.RoundingMode;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -195,6 +201,11 @@ public class Wallet_frag extends Fragment {
     }
 
     private BigDecimal getEthBalance() {
+
+        if(!isConnected(getContext())){
+            buildDialog(getContext()).show();
+        }
+
         final BigDecimal[] nbalance = {null};
 
         fetchBalance(new EthBalanceCallback<EthGetBalance>() {
@@ -251,12 +262,12 @@ public class Wallet_frag extends Fragment {
                 try {
                     JSONArray array = response.getJSONArray("result");
                     Log.d("TransactionList", "onResponseFromEtherScan: "+array.toString());
-                    TransactionDetail[] detail = gson.fromJson(String.valueOf(array),TransactionDetail[].class);
+                    List<TransactionDetail> detail = Arrays.asList(gson.fromJson(String.valueOf(array), (Type) TransactionDetail[].class));
 
                     Utility.transactionList = detail;
                     List<TransactionDetail> smallTransactionList = new ArrayList<>();
-                    for(int i=1;i<=5 && i<=detail.length;i++){
-                        smallTransactionList.add(detail[detail.length - i]);
+                    for(int i=1;i<=5 && i<=detail.size();i++){
+                        smallTransactionList.add(detail.get(detail.size() - i));
                     }
 
                     TransactionListAdapter adapter = new TransactionListAdapter(getContext(),smallTransactionList,Utility.exchangeRate);
@@ -320,6 +331,44 @@ public class Wallet_frag extends Fragment {
     }
 
 
+
+    public boolean isConnected (Context context){
+
+        ConnectivityManager cm =
+                (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        boolean isConnected = activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
+
+        return isConnected;
+    }
+
+    public AlertDialog.Builder buildDialog (Context c){
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(c);
+        builder.setTitle("No Internet Connection");
+        builder.setMessage("You need to have Mobile Data or wifi to access this. Press ok to Exit");
+
+        builder.setPositiveButton("Retry", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                getEthBalance();
+            }
+        });
+
+        builder.setNegativeButton("Close App", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                getActivity().finish();
+            }
+        });
+
+        return builder;
+    }
+
+
     private void initviews(View view) {
         txtadrs = view.findViewById(R.id.txtadres);
         txtethval = view.findViewById(R.id.txtethval);
@@ -336,7 +385,7 @@ public class Wallet_frag extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         Utility.web3j.shutdown();
-        Utility.executorService.shutdown();
+        //Utility.executorService.shutdown();
     }
 
 }
