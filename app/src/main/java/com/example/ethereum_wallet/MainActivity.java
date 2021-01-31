@@ -1,6 +1,5 @@
 package com.example.ethereum_wallet;
 
-import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -60,8 +59,9 @@ public class MainActivity extends AppCompatActivity {
         newtxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,NewWallet.class);
-                startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(MainActivity.this).toBundle());
+//                Intent intent = new Intent(MainActivity.this,NewWallet.class);
+//                startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(MainActivity.this).toBundle());
+                Toast.makeText(MainActivity.this, "Sorry its Still under development", Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -30,6 +31,7 @@ public class Network extends DialogFragment {
     SharedPreferences preferences;
     RadioGroup networkgrp;
     Button setnetwork;
+    ProgressBar lod;
 
     @NonNull
     @Override
@@ -70,6 +72,8 @@ public class Network extends DialogFragment {
         setnetwork.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                setnetwork.setVisibility(View.GONE);
+                lod.setVisibility(View.VISIBLE);
                 SharedPreferences.Editor editor = preferences.edit();
                 String network=null;
                 if(networkgrp.getCheckedRadioButtonId() == R.id.ropsten){
@@ -107,6 +111,7 @@ public class Network extends DialogFragment {
                         } catch (ExecutionException e) {
                             e.printStackTrace();
                         }
+                        lod.setVisibility(View.GONE);
 
                         dismiss();
                     }
@@ -145,6 +150,7 @@ public class Network extends DialogFragment {
     private void initviews(View view) {
         networkgrp = view.findViewById(R.id.networkgrp);
         setnetwork = view.findViewById(R.id.setnetwork);
+        lod = view.findViewById(R.id.progressBar2);
     }
 
 }

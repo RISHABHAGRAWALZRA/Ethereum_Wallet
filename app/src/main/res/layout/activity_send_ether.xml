@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/imglogo"
         android:layout_width="96dp"
         android:layout_height="82dp"
         android:layout_marginTop="16dp"
@@ -33,16 +33,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/imgtxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/aldrich"
         android:text="Send Ether"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/imageView4"
-        app:layout_constraintStart_toStartOf="@+id/imageView4"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+        app:layout_constraintEnd_toEndOf="@+id/imglogo"
+        app:layout_constraintStart_toStartOf="@+id/imglogo"
+        app:layout_constraintTop_toBottomOf="@+id/imglogo" />
 
     <com.kofigyan.stateprogressbar.StateProgressBar
         android:id="@+id/stepview"
@@ -51,10 +51,10 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="30dp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView4"
+        app:layout_constraintEnd_toEndOf="@+id/imglogo"
         app:layout_constraintHorizontal_bias="0.468"
-        app:layout_constraintStart_toStartOf="@+id/imageView4"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="@+id/imglogo"
+        app:layout_constraintTop_toBottomOf="@+id/imgtxt"
         app:spb_animateToCurrentProgressState="true"
         app:spb_checkStateCompleted="true"
         app:spb_currentStateDescriptionColor="#499AD0"
@@ -471,7 +471,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/imgtxt" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/successdet"
@@ -480,12 +480,12 @@
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/checkedAnim"
             android:layout_width="wrap_content"
-            android:layout_height="200dp"
+            android:layout_height="150dp"
             android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -508,7 +508,7 @@
             android:id="@+id/txtto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
             android:text="to"
             app:layout_constraintStart_toStartOf="parent"
@@ -519,7 +519,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TextView"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:textStyle="bold"
             android:visibility="visible"
             app:layout_constraintStart_toStartOf="@+id/txtto"
@@ -540,7 +540,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TextView"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:textStyle="bold"
             android:visibility="visible"
             app:layout_constraintStart_toStartOf="@+id/txtfrom"
@@ -562,7 +562,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:text="TextView"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:textStyle="bold"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="@+id/txtgas"
@@ -584,7 +584,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TextView"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:textStyle="bold"
             android:visibility="visible"
             app:layout_constraintStart_toStartOf="@+id/textView27"
@@ -605,7 +605,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TextView"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:textStyle="bold"
             android:visibility="visible"
             app:layout_constraintStart_toStartOf="@+id/textView29"

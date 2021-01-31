@@ -42,11 +42,11 @@ import pl.droidsonroids.gif.GifImageView;
 public class SendEtherActivity extends AppCompatActivity {
 
     View successdet;
-    ImageView scan, dolimg, ethimg;
+    ImageView scan, dolimg, ethimg,imglogo;
     Button btnnxt, btnset, cnclbtn, tnsctbtn;
     ImageButton clsbtn, imgbtnbac, imgscan;
     EditText edtxtadrs, edtxtval;
-    TextView txtbaleth, txtbaldol, txtrecadrs, txtrecamt,to,from,gsusd,trnscthsh,blckhsh;
+    TextView txtbaleth, txtbaldol, txtrecadrs, txtrecamt,to,from,gsusd,trnscthsh,blckhsh,imgtxt;
     CardView adrscard, ethcard, tnsctdetcard;
     SwitchCompat currency;
     GifImageView loadinggif;
@@ -202,6 +202,8 @@ public class SendEtherActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(TransactionReceipt result) {
                         loadinggif.setVisibility(View.GONE);
+                        imglogo.setVisibility(View.GONE);
+                        imgtxt.setVisibility(View.GONE);
                         successdet.setVisibility(View.VISIBLE);
                         to.setText(result.getTo());
                         from.setText(result.getFrom());
@@ -351,5 +353,7 @@ public class SendEtherActivity extends AppCompatActivity {
         gsusd = findViewById(R.id.gsusd);
         trnscthsh = findViewById(R.id.trscthsh);
         blckhsh = findViewById(R.id.blckhsh);
+        imglogo = findViewById(R.id.imglogo);
+        imgtxt = findViewById(R.id.imgtxt);
     }
 }
