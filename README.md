@@ -1,5 +1,5 @@
 # Ethereum_Wallet
-<a href="url"><img src="app/src/main/res/drawable/ethereum_wallet.png" align="left" height="350" width="350"></a>
+<a href="url"><img src="app/src/main/res/drawable/ethereum_wallet.png" align="left" height="250" width="250"></a>
 
 Ethereum_Wallet is an Wallet Android Application works on Ethereum based Blockchain.
 
@@ -9,6 +9,8 @@ Its very easy to use this app , A person having no knowledge of blockchain can a
 By taking care of security measure, There is no centralised server to store your (precious) credendials. So its completely safe to use this app.
 
 
+
+#
 
 ## Features
 
@@ -20,48 +22,169 @@ By taking care of security measure, There is no centralised server to store your
 <a href="url"><img src="AppScreenShots/SendFrag2.jpeg" align="left" height="350" width="200" ></a>
 <a href="url"><img src="AppScreenShots/SendFrag3.jpeg" align="left" height="350" width="200" ></a>
 
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
 - Get Some latest Transaction and a all transaction List
 
 #<a href="url"><img src="AppScreenShots/AllTransactionListActivity.jpeg" align="left" height="350" width="200" ></a>
 #<a href="url"><img src="AppScreenShots/WalletFrag1.jpeg" align="left" height="350" width="200" ></a>
 
-
+#
+#
+#
+##
+#
+#
+#
+#
+#
+#
+#
 - Get the Public key of others by Scanning Qr Code
 
 #<a href="url"><img src="AppScreenShots/SharePubKeyDialog.jpeg" align="left" height="350" width="200" ></a>
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+
 
 - Get the Detail of balance in Ethers as well as in other currencies also
 
 #<a href="url"><img src="AppScreenShots/WalletFrag2.jpeg" align="left" height="350" width="200" ></a>
-
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
 - Share your public Address with other
 
 #<a href="url"><img src="AppScreenShots/SharePubKeyActivity.jpeg" align="left" height="350" width="200" ></a>
 
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
 
 - To secure the wallet from other,You Should Set a four digit PIN, Which is must condition to Open it
 
 #<a href="url"><img src="AppScreenShots/setPassActivity.jpeg" align="left" height="350" width="200" ></a>
 
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
 - You can also change this PIN inside the App
 
 #<a href="url"><img src="AppScreenShots/ChangePINFrag1.jpeg" align="left" height="350" width="200" ></a>
 #<a href="url"><img src="AppScreenShots/ChangePINFrag2.jpeg" align="left" height="350" width="200" ></a>
 
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
 - You can easily switch between different networks
 
 #<a href="url"><img src="AppScreenShots/NetworkDialog.jpeg" align="left" height="350" width="200" ></a>
 
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
 - There is also an option to send funds in different currencies
 
 #<a href="url"><img src="AppScreenShots/SendFrag2a.jpeg" align="left" height="350" width="200" ></a>
+
+#
+#
+#
+#
+#
+#
+##
+#
+#
+#
+#
+#
+#
+#
+#
 
 - In this app it is especially take care that user does not have to fill the other important field to make a transaction (like gasLimit and gasRate field)
 - Logout, this will erase your all records from the app, Similar to a reset option
 
 #<a href="url"><img src="AppScreenShots/logoutDialog.jpeg" align="left" height="350" width="200" ></a>
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
 
 - Easily copy your public address to clip board
+
 
 
 
@@ -117,7 +240,10 @@ If You use this App through Github repo then you need two Keys
 And paste those key in Build.gradle of module
 
 <a href="url"><img src="AppScreenShots/build.gradle(module-app).png" align="left" height="150" width="550"></a>
-
+#
+#
+#
+#
 After adding this Just Build it and Now you can use it.
 
 > I hope You like it
