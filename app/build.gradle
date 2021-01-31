@@ -8,7 +8,8 @@ def ropstenURL = "No_URL_FOUND"
 def kovanURL = "No_URL_FOUND"
 def mainNetURL = "No_URL_FOUND"
 def rinkebyURL = "No_URL_FOUND"
-def detailApi = "No_API_FOUND"
+def infuraApi = "NO_API_FOUND"
+def detailApi = "NO_API_FOUND"
 
 
 def sensitiveDataFile = file('../sensitive_data.txt')
@@ -24,6 +25,7 @@ if (sensitiveDataFile.canRead()) {
         if (sensitiveData.containsKey('mainNetUrl')) mainNetURL = sensitiveData['mainNetUrl']
         if (sensitiveData.containsKey('rinkebyUrl')) rinkebyURL = sensitiveData['rinkebyUrl']
         if(sensitiveData.containsKey('etherScanApi')) detailApi = sensitiveData['etherScanApi']
+        if(sensitiveData.containsKey('infuraApi')) infuraApi = sensitiveData['infuraApi']
     }
 }
 
@@ -35,6 +37,7 @@ if (kovanURL == "No_URL_FOUND") kovanURL = '"REVIEWERS_FACEBOOK_APP_ID_GOES_HERE
 if (mainNetURL == "No_URL_FOUND") mainNetURL = '"REVIEWERS_GMAIL_CREDENTIAL_USERNAME_GOES_HERE"'
 if (rinkebyURL == "No_URL_FOUND") rinkebyURL = '"REVIEWERS_GMAIL_CREDENTIAL_PASSWORD_GOES_HERE"'
 if(detailApi == "NO_API_FOUND") detailApi = ""
+if(infuraApi == "NO_API_FOUND") infuraApi = ""
 // End of reading the sensitive data
 
 
@@ -59,12 +62,14 @@ android {
         buildConfigField "String", "mainNetURL", mainNetURL
         buildConfigField "String", "rinkebyURL", rinkebyURL
         buildConfigField "String", "detailApi", detailApi
+        buildConfigField "String", "infuraApi", infuraApi
         // Add the sensitive data as String Resources
         resValue "string", "ropstenURL", ropstenURL
         resValue "string", "kovanURL", kovanURL
         resValue "string", "mainNetURL", mainNetURL
         resValue "string", "rinkebyURL", rinkebyURL
         resValue "string", "detailApi", detailApi
+        resValue "string", "infuraApi", infuraApi
         // End of injecting the sensitive data
     }
 

@@ -73,6 +73,7 @@ public class Wallet_frag extends Fragment {
     RequestQueue queue;
 
     Boolean conn=false;
+    SharedPreferences preferences;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -82,7 +83,7 @@ public class Wallet_frag extends Fragment {
         queue = Volley.newRequestQueue(getContext());
 
         //Loading Credentials
-        SharedPreferences preferences = getContext().getSharedPreferences(getString(R.string.preference_file_key), MODE_PRIVATE);
+        preferences = getContext().getSharedPreferences(getString(R.string.preference_file_key), MODE_PRIVATE);
         String key = preferences.getString("private_key", null);
         Utility.credentials = Credentials.create(key);
 
@@ -117,7 +118,9 @@ public class Wallet_frag extends Fragment {
             @Override
             public void run() {
                 // Connection
-                InfuraHttpService infuraHttpService = new InfuraHttpService(BuildConfig.ropstenURL);
+                String network = preferences.getString("network","ropsten");
+                String Url = "https://"+network+".infura.io/v3/"+BuildConfig.infuraApi;
+                InfuraHttpService infuraHttpService = new InfuraHttpService(Url);
 
                 handler.post(new Runnable() {
                     @Override
@@ -200,7 +203,7 @@ public class Wallet_frag extends Fragment {
         void onComplete(EthGetBalance result);
     }
 
-    private BigDecimal getEthBalance() {
+    private void getEthBalance() {
 
         if(!isConnected(getContext())){
             buildDialog(getContext()).show();
@@ -222,7 +225,6 @@ public class Wallet_frag extends Fragment {
             }
         }, Utility.mainThreadHandler);
 
-        return nbalance[0];
     }
 
     private void fetchBalance(EthBalanceCallback<EthGetBalance> ethGetBalanceEthBalanceCallback, Handler mainThreadHandler) {
@@ -251,7 +253,8 @@ public class Wallet_frag extends Fragment {
 
 
     private void fetchForAllTransactions() {
-        String network = "ropsten";
+        String network;
+        network = preferences.getString("network","ropsten");
         String url = "https://api-"+ network +".etherscan.io/api?module=account&action=txlist&address="+ Utility.credentials.getAddress() +"&startblock=0&endblock=99999999&sort=asc&apikey=" + BuildConfig.detailApi;
 
         JsonObjectRequest transactionListJsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {

@@ -25,7 +25,7 @@
     <group android:checkableBehavior="single"
         android:id="@+id/menu_bottom">
         <item
-            android:id="@+id/settings"
+            android:id="@+id/network"
             android:icon="@drawable/ic_baseline_settings_24"
             android:title="Settings" />
 

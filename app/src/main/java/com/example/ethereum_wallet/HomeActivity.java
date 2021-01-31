@@ -1,8 +1,11 @@
 package com.example.ethereum_wallet;
 
+import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,7 +27,10 @@ import com.google.android.material.navigation.NavigationView;
 public class HomeActivity extends AppCompatActivity {
 
 
+
     TextView title;
+    public static TextView ntwrk;
+    public static Button ntclr;
     LinearLayout linlay;
     Toolbar toolbar;
     NavigationView navView;
@@ -79,6 +85,25 @@ public class HomeActivity extends AppCompatActivity {
 
         });
 
+        SharedPreferences preferences = getSharedPreferences(getString(R.string.preference_file_key),MODE_PRIVATE);
+        String network = preferences.getString("network",null);
+
+        if(network.equals("ropsten")){
+            ntclr.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.pink)));
+            ntwrk.setText("Ropsten Test Network");
+        }else if(network.equals("kovan")){
+            ntclr.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.purple)));
+            ntwrk.setText("Kovan Test Network");
+
+        }else if(network.equals("rinkeby")){
+            ntclr.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.yellow)));
+            ntwrk.setText("Rinkeby Test Network");
+
+        }else if(network.equals("mainnet")){
+            ntclr.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green)));
+            ntwrk.setText("Ethereum Main Network");
+        }
+
         linlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -120,6 +145,8 @@ public class HomeActivity extends AppCompatActivity {
         navView = findViewById(R.id.nav_view);
         linlay = findViewById(R.id.linlay);
         title = findViewById(R.id.title);
+        ntclr = findViewById(R.id.ntclr);
+        ntwrk = findViewById(R.id.ntwrk);
     }
 
 

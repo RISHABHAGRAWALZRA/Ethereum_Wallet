@@ -72,6 +72,7 @@ public class PassSetActivity extends AppCompatActivity {
                     editor.putString("private_key",key);
                     editor.putString("pin",PIN);
                     editor.putBoolean("logged",true);
+                    editor.putString("network","ropsten");
                     editor.commit();
 
                     Intent intent = new Intent(PassSetActivity.this,HomeActivity.class);
