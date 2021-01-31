@@ -6,7 +6,9 @@ Ethereum_Wallet is an Wallet Android Application works on Ethereum based Blockch
 This application let you interact with your Ethereum account on different network(including Test Networks). Think of it like an internet banking app – without the bank. Your wallet lets you read your balance, send transactions and connect to applications.
 Its very easy to use this app , A person having no knowledge of blockchain can also use this.
 
-By taking care of security measure, There is no centralised server to store your (precious) credendials. So its completely safe to use this app
+By taking care of security measure, There is no centralised server to store your (precious) credendials. So its completely safe to use this app.
+
+
 
 ## Features
 
@@ -14,9 +16,9 @@ By taking care of security measure, There is no centralised server to store your
   - Send
   - Receive
 
-#<a href="url"><img src="AppScreenShots/SendFrag1.jpeg" align="left" height="350" width="200" ></a>
-#<a href="url"><img src="AppScreenShots/SendFrag2.jpeg" align="left" height="350" width="200" ></a>
-#<a href="url"><img src="AppScreenShots/SendFrag3.jpeg" align="left" height="350" width="200" ></a>
+<a href="url"><img src="AppScreenShots/SendFrag1.jpeg" align="left" height="350" width="200" ></a>
+<a href="url"><img src="AppScreenShots/SendFrag2.jpeg" align="left" height="350" width="200" ></a>
+<a href="url"><img src="AppScreenShots/SendFrag3.jpeg" align="left" height="350" width="200" ></a>
 
 - Get Some latest Transaction and a all transaction List
 
@@ -63,6 +65,10 @@ By taking care of security measure, There is no centralised server to store your
 
 
 
+
+
+
+
 ## Tech Stack
 - Programming Languages
   - JAVA
@@ -78,6 +84,8 @@ By taking care of security measure, There is no centralised server to store your
   - Material Design
   - Android Basic UI
   - Google Standard Designs
+
+
 
 ## Working
 This application works on Ethereum Blockchain.
