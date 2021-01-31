@@ -1,7 +1,6 @@
 # Ethereum_Wallet
 <a href="url"><img src="app/src/main/res/drawable/ethereum_wallet.png" align="left" height="350" width="350"></a>
 
-
 Ethereum_Wallet is an Wallet Android Application works on Ethereum based Blockchain.
 
 This application let you interact with your Ethereum account on different network(including Test Networks). Think of it like an internet banking app – without the bank. Your wallet lets you read your balance, send transactions and connect to applications.
@@ -9,7 +8,7 @@ Its very easy to use this app , A person having no knowledge of blockchain can a
 
 By taking care of security measure, There is no centralised server to store your (precious) credendials. So its completely safe to use this app
 
-### Features
+## Features
 
 - Make Transaction Between Account
   - Send
@@ -64,7 +63,7 @@ By taking care of security measure, There is no centralised server to store your
 
 
 
-### Tech Stack
+## Tech Stack
 - Programming Languages
   - JAVA
   - Solidity
@@ -80,7 +79,7 @@ By taking care of security measure, There is no centralised server to store your
   - Android Basic UI
   - Google Standard Designs
 
-### Working
+## Working
 This application works on Ethereum Blockchain.
 
 To interact with Blockchin, it uses [Infura](https://infura.io/) blockchin full node
@@ -100,7 +99,7 @@ To get the Exchange Rates of Ether with other Currencies it uses [Coinbase](http
 
 
 
-### Setup Steps
+## Setup Steps
 **This App require minimum SDK level 21**
 
 If You use this App through Github repo then you need two Keys
